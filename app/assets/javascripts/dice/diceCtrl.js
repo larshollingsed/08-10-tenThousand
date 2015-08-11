@@ -17,6 +17,8 @@ function($scope, dice, $http){
     }
   }
   
+  // var scoreTheseDice = dice.scoreTheseDice($scope.submitted)
+  
   $scope.scoreDice = function() {
     for (y = 0, $scope.submitted = []; y < $scope.dice.length; y++) {
       if ($scope.dice[y].held === true) {
@@ -24,16 +26,15 @@ function($scope, dice, $http){
       }
     }
     if ($scope.submitted.length > 0) {
-      scoreTheseDice()
+      dice.scoreTheseDice($scope.submitted)
+        .then(function(data) {
+          $scope.score = data.data
+        })
     } else {
       $scope.score = 0
     }
   }
 
   // move to factory
-  var scoreTheseDice = function () {
-    return $http.post('/potential_score', {submitted: $scope.submitted}).success(function(data){
-      $scope.score = data
-    })
-  }
+
 }])

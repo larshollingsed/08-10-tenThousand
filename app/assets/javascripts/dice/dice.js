@@ -32,6 +32,11 @@ fark.factory('dice', ['$http', function($http) {
     }
   }
   
+  x.scoreTheseDice = function (submitted) {
+    return $http.post('/potential_score', {submitted: submitted}).success(function(score){
+      return score
+    })
+  }
   // x.score = function (dice) {
   //   return $http.post('/angular_score', {submitted: dice}).success(function(data){
   //     x.dice;
