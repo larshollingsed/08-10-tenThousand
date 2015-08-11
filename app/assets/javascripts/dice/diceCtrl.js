@@ -9,21 +9,7 @@ function($scope, dice, $http){
   
   $scope.addDie = dice.addDie;
   
-  $scope.getImage = function(face) {
-    if (face === 1) {
-      return "one.png";
-    } else if (face === 2) {
-      return "two.png";
-    } else if (face === 3) {
-      return "three.png";
-    } else if (face === 4) {
-      return "four.png";
-    } else if (face === 5) {
-      return "five.png";
-    } else if (face === 6) {
-      return "six.png";
-    }
-  }
+  $scope.getImage = dice.getImage;
   
   $scope.rollDice = function() {
     for (y = 0, $scope.dice = []; y < $scope.number; y++) {
