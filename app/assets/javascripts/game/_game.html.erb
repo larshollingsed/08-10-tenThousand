@@ -1,7 +1,7 @@
 <form ng-submit="scoreDice()">
   <div ng-repeat="die in dice">
     <label>
-    <input type="checkbox" ng-model="die.held" ng-click="scoreDice()"> {{die.face}}<img src><%= image_tag('/assets{{getImage(die.face)}}', size: "50") %></input>
+    <input type="checkbox" ng-model="die.held" ng-click="scoreDice()"><img src><%= image_tag('/assets{{getImage(die.face)}}', size: "50") %></input>
 </label>
   </div>
   <p>
