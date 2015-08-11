@@ -2,6 +2,7 @@ fark.controller('DiceCtrl', [
 '$scope',
 'dice',
 function($scope, dice){
+
   $scope.dice = dice.dice;
   $scope.score = 0;
   $scope.round = 0
@@ -12,6 +13,7 @@ function($scope, dice){
   
   $scope.getImage = dice.getImage;
   
+  // move to factory?
   var rollDice = function() {
     for (y = 0, $scope.dice = []; y < $scope.diceRemaining; y++) {
       $scope.dice.push({id: y + 1, face: Math.floor(Math.random() * 6) + 1})

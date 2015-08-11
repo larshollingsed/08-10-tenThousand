@@ -12,7 +12,7 @@ fark.factory('dice', ['$http', function($http) {
     score: 0
   };
   
-  x.addDie = function() {
+  x.rollDice = function(number) {
     x.dice.push({cube: "new", face: Math.floor(Math.random() * 6) + 1});
   }
   

@@ -11,6 +11,12 @@ function($stateProvider, $urlRouterProvider) {
       controller: 'DiceCtrl'
     })
 
+    $stateProvider.state('newGame', {
+        url: '/newgame',
+        templateUrl: 'game/_newgame.html',
+        controller: 'PlayerCtrl'
+    })
+
   $urlRouterProvider.otherwise('game');
 }])
 

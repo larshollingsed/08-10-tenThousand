@@ -9,7 +9,8 @@
     {{submitted}}
   </p>
 </form>
-<button ng-show="score" ng-click="scoreAndRoll()">Save these dice and roll again</button>
+<button ng-show="score" ng-click="scoreAndRoll()">Save these dice and roll again</button><br>
+<button ng-show="score" ng-click="endTurn()">Save these dice and end turn</button>
 
 <form ng-submit="rollDice()">
   <input type="number" ng-model="number"></input>
@@ -18,6 +19,11 @@
 <p>
   Current Round Score = {{round}}
 </p>
+<div ng-controller="PlayerCtrl">
+<p ng-repeat="player in players">
+  {{player.name}} - {{player.total}}
+</p>
+</div>
 <h5>
   Scoring - 
 </h5>

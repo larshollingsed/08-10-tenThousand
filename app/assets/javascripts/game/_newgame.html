@@ -1,0 +1,19 @@
+<h2>
+  New Game!
+</h2>
+
+<p>
+  How many players?
+  <input type="number" ng-model="numberOfPlayers" ng-change="playerNumber()"></input>
+</p>
+<form ng-submit="createPlayers()">
+  <div ng-repeat="player in players track by $index">
+    <input type="text" ng-model="player.name" ng-change='change()'>
+  </div>
+  <button type="submit">Add these players</button>
+</form>
+<div ng-repeat="player in players">
+  {{player.name}}
+</div>
+
+<a ng-href="#/game">Start game</a>
