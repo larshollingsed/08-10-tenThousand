@@ -15,3 +15,22 @@
   <input type="number" ng-model="number"></input>
   <button type="submit">Roll this many dice</button>
 </form>
+<h5>
+  Scoring - 
+</h5>
+<ul>
+  <li>
+    6 dice straight => 1500
+  </li>
+  <li>
+    3 pairs => 750
+  </li>
+  <li>
+    3 of a kind => face * 100<br>
+    ~~~ 3 ones => 1000
+  </li>
+  <li>
+    4/5/6 of a kind => twice the value of the previous multiple<br>
+    EXAMPLE - three 4's => 400; four 4's => 800; five 4's => 1600
+  </li>
+</ul>
