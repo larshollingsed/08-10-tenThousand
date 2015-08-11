@@ -1,18 +1,19 @@
 fark.controller('DiceCtrl', [
 '$scope',
 'dice',
-'$http',
-function($scope, dice, $http){
+function($scope, dice){
   $scope.dice = dice.dice;
   $scope.score = 0;
+  $scope.round = 0
   $scope.submitted = []
+  $scope.diceRemaining = 6
   
   $scope.addDie = dice.addDie;
   
   $scope.getImage = dice.getImage;
   
-  $scope.rollDice = function() {
-    for (y = 0, $scope.dice = []; y < $scope.number; y++) {
+  var rollDice = function() {
+    for (y = 0, $scope.dice = []; y < $scope.diceRemaining; y++) {
       $scope.dice.push({id: y + 1, face: Math.floor(Math.random() * 6) + 1})
     }
   }
@@ -34,7 +35,15 @@ function($scope, dice, $http){
       $scope.score = 0
     }
   }
+  
+  
+  $scope.scoreAndRoll = function() {
+    $scope.round = $scope.round + $scope.score
+    $scope.score = 0
+    $scope.diceRemaining = $scope.diceRemaining - $scope.submitted.length
+    $scope.submitted = []
+    rollDice();
+  }
 
-  // move to factory
 
 }])

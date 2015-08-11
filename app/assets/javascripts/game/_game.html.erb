@@ -8,15 +8,16 @@
     Score for these dice - {{score}}<br>
     {{submitted}}
   </p>
-  <button type="submit">Hold these dice</button>
-  <button ng-click="scoreTheseDice($scope.submitted)">Score these dice</button>
 </form>
+<button ng-click="scoreAndRoll()">Save these dice and roll again</button>
 
-<button ng-click="addDie()">Add a die</button>
 <form ng-submit="rollDice()">
   <input type="number" ng-model="number"></input>
   <button type="submit">Roll this many dice</button>
 </form>
+<p>
+  Current Round Score = {{round}}
+</p>
 <h5>
   Scoring - 
 </h5>
