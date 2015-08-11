@@ -37,7 +37,11 @@ function($scope, dice, $http){
         $scope.submitted.push($scope.dice[y].face)
       }
     }
-    scoreTheseDice()
+    if ($scope.submitted.length > 0) {
+      scoreTheseDice()
+    } else {
+      $scope.score = 0
+    }
   }
 
   // move to factory
