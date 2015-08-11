@@ -1,0 +1,17 @@
+<form ng-submit="scoreDice()">
+  <div ng-repeat="die in dice">
+    <input type="checkbox" ng-model="die.held" ng-click="scoreDice()"> {{die.face}}</input>
+
+  </div>
+  <p>
+    Score for these dice - {{score}}<br>
+    {{submitted}}
+  </p>
+  <button type="submit">Hold these dice</button>
+  <button ng-click="scoreTheseDice($scope.submitted)">Score these dice</button>
+</form>
+<button ng-click="addDie()">Add a die</button>
+<form ng-submit="rollDice()">
+  <input type="number" ng-model="number"></input>
+  <button type="submit">Roll this many dice</button>
+</form>
