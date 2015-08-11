@@ -1,7 +1,7 @@
 <form ng-submit="scoreDice()">
   <div ng-repeat="die in dice">
     <label>
-    <input type="checkbox" ng-model="die.held" ng-click="scoreDice()"> {{die.face}}<img src><%= image_tag('/assets{{getImage(die.face)}}') %></input>
+    <input type="checkbox" ng-model="die.held" ng-click="scoreDice()"> {{die.face}}<img src><%= image_tag('/assets{{getImage(die.face)}}', size: "50") %></input>
 </label>
   </div>
   <p>
@@ -11,8 +11,7 @@
   <button type="submit">Hold these dice</button>
   <button ng-click="scoreTheseDice($scope.submitted)">Score these dice</button>
 </form>
-<img src="/one.png">
-<%= image_tag("one.png", size: "75") %>
+
 <button ng-click="addDie()">Add a die</button>
 <form ng-submit="rollDice()">
   <input type="number" ng-model="number"></input>
