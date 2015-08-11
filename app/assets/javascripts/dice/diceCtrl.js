@@ -36,12 +36,15 @@ function($scope, dice){
     }
   }
   
-  
+  // TODO SRP this!
   $scope.scoreAndRoll = function() {
     $scope.round = $scope.round + $scope.score
     $scope.score = 0
     $scope.diceRemaining = $scope.diceRemaining - $scope.submitted.length
     $scope.submitted = []
+    if ($scope.diceRemaining == 0) {
+      $scope.diceRemaining = 6
+    }
     rollDice();
   }
 

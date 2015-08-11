@@ -9,7 +9,7 @@
     {{submitted}}
   </p>
 </form>
-<button ng-click="scoreAndRoll()">Save these dice and roll again</button>
+<button ng-show="score" ng-click="scoreAndRoll()">Save these dice and roll again</button>
 
 <form ng-submit="rollDice()">
   <input type="number" ng-model="number"></input>
