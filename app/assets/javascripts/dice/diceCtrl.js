@@ -24,7 +24,7 @@ function($scope, $scope, dice, players){
     }
   }
   
-  $scope.scorable = function() {
+  var scorable = function() {
     var allDice = []
     for (y = 0; y < $scope.dice.length; y++) {
       allDice.push($scope.dice[y].face)
@@ -32,10 +32,16 @@ function($scope, $scope, dice, players){
      dice.scoreTheseDice(allDice)
       .then(function(data) {
         if (data.data == 0) {
-          alert("unscorable! :(")
+          alert("unscorable! :(");
+          $scope.round = 0;
+          $scope.unscorable = true;
         }
       })
   }
+  
+  $scope.$watch('dice', function(newVal, oldVal) {
+    scorable()
+  })
   
   $scope.resetRoll = function() {
     $scope.dice = dice.rollDice(6);

@@ -15,17 +15,17 @@
 </form>
 <!-- saves score to round and rolls remaining dice -->
 <button ng-show="score" ng-click="scoreAndRoll()">Save these dice and roll again</button><br>
-<!-- ideally saves score to player and passes to the next TODO -->
 
-<button ng-click="rollDice2()">Roll dice</button>
+
 <p>
   <!-- shows accumulated points for the round -->
   Current Round Score = {{round}}
 </p>
 <div ng-controller="PlayerCtrl">
   Current Player - {{playerTurn.name}}<br>
+  <button ng-show="unscorable" ng-click="endTurn()">End turn</button>
+<!-- saves score to player and passes to the next -->
   <button ng-show="score + round >= 350 && score" ng-click="endTurn()">Save these dice and end turn</button><br>
-  <button ng-click="playerSelector()">Next Player</button>
 <p ng-repeat="player in players">
   {{player.name}} - {{player.total}}
 </p>
