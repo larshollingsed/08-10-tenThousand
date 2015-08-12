@@ -1,7 +1,9 @@
 fark.controller('PlayerCtrl', [
   '$scope',
+  '$rootScope',
   'players',
-  function($scope, players) {
+  'dice',
+  function($scope, $rootScope, players, dice) {
     $scope.players = players.players;
     $scope.turn = 0;
     $scope.playerTurn = $scope.players[$scope.turn];
@@ -10,6 +12,11 @@ fark.controller('PlayerCtrl', [
       players.changeNumber($scope.numberOfPlayers);
     }
     
+    $scope.endTurn = function() {
+      $scope.playerTurn.total = $scope.playerTurn.total + $scope.round + $scope.score;
+      playerSelector();
+      $scope.diceRemaining = 6;
+    }
     // $scope.change = function(){
         
     //   var count = $scope.players.length,
@@ -36,7 +43,7 @@ fark.controller('PlayerCtrl', [
     
     
     
-    $scope.playerSelector = function() {
+    var playerSelector = function() {
       $scope.turn = $scope.turn + 1;
       if ($scope.turn == $scope.players.length) {
         $scope.turn = 0;

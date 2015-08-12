@@ -15,7 +15,7 @@
 <!-- saves score to round and rolls remaining dice -->
 <button ng-show="score" ng-click="scoreAndRoll()">Save these dice and roll again</button><br>
 <!-- ideally saves score to player and passes to the next TODO -->
-<button ng-show="score" ng-click="endTurn()">Save these dice and end turn</button><br>
+
 <form ng-submit="rollDice()">
   <input type="number" ng-model="number"></input>
   <button type="submit">Roll this many dice</button>
@@ -25,6 +25,8 @@
   Current Round Score = {{round}}
 </p>
 <div ng-controller="PlayerCtrl">
+  Current Player - {{playerTurn.name}}<br>
+  <button ng-show="score" ng-click="endTurn(); diceroll()">Save these dice and end turn</button><br>
   <button ng-click="playerSelector()">Next Player</button>
 <p ng-repeat="player in players">
   {{player.name}} - {{player.total}}
