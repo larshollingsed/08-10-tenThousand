@@ -23,7 +23,7 @@
 </p>
 <div ng-controller="PlayerCtrl">
   Current Player - {{playerTurn.name}}<br>
-  <button ng-show="score" ng-click="endTurn()">Save these dice and end turn</button><br>
+  <button ng-show="score + round >= 350 && score" ng-click="endTurn()">Save these dice and end turn</button><br>
   <button ng-click="playerSelector()">Next Player</button>
 <p ng-repeat="player in players">
   {{player.name}} - {{player.total}}
