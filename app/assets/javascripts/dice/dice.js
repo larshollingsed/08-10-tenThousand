@@ -9,12 +9,14 @@ fark.factory('dice', ['$http', function($http) {
       {id: 5, face: Math.floor(Math.random() * 6)+ 1, held: false, image: null},
       {id: 6, face: Math.floor(Math.random() * 6)+ 1, held: false, image: null}
     ],
-    submitted: [],
-    score: 0
   };
   
+  
   x.rollDice = function(number) {
-    x.dice.push({cube: "new", face: Math.floor(Math.random() * 6) + 1});
+    for (y = 0, x.dice = []; y < number; y++) {
+      x.dice.push({id: y + 1, face: Math.floor(Math.random() * 6) + 1})
+    }
+    return x.dice
   }
   
   // gets image from asset pipeline based on randomly generated number
