@@ -48,6 +48,7 @@ function($scope, $scope, dice, players){
     $scope.diceRemaining = 6;
     $scope.score = 0;
     $scope.round = 0;
+    $scope.unscorable = false;
     $scope.submitted = [];
   }
   
