@@ -1,15 +1,20 @@
 <form ng-submit="scoreDice()">
+  <!-- iterates through dice (JS objects from dice.js factory) -->
   <div ng-repeat="die in dice">
-    <!-- <label for="poop"> -->
+    <!--  creates a selectable die face image for each randomly generated die-->
     <input type="checkbox" ng-model="die.held" ng-click="scoreDice()" id="die{{die.id}}"> </input><label for="die{{die.id}}"><%= image_tag('/assets/{{getImage(die.face)}}', size: "50") %>
 </label>
   </div>
   <p>
+    <!-- $scope.score  is updated on every click of a die-->
     Score for these dice - {{score}}<br>
+    <!-- shows die faces submitted** development only-->
     {{submitted}}
   </p>
 </form>
+<!-- saves score to round and rolls remaining dice -->
 <button ng-show="score" ng-click="scoreAndRoll()">Save these dice and roll again</button><br>
+<!-- ideally saves score to player and passes to the next TODO -->
 <button ng-show="score" ng-click="endTurn()">Save these dice and end turn</button>
 
 <form ng-submit="rollDice()">
@@ -17,16 +22,19 @@
   <button type="submit">Roll this many dice</button>
 </form>
 <p>
+  <!-- shows accumulated points for the round -->
   Current Round Score = {{round}}
 </p>
 <div ng-controller="PlayerCtrl">
 <p ng-repeat="player in players">
   {{player.name}} - {{player.total}}
 </p>
+  Players # - {{playersInThisGame}}
 </div>
 <h5>
   Scoring - 
 </h5>
+<!-- ReadMe of scoring basics -->
 <ul>
   <li>
     6 dice straight => 1500

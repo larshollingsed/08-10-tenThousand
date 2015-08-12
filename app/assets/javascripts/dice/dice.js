@@ -1,4 +1,5 @@
 fark.factory('dice', ['$http', function($http) {
+  // sets initial dice to 6 randoms
   var x = {
     dice: [
       {id: 1, face: Math.floor(Math.random() * 6)+ 1, held: false, image: null},
@@ -16,6 +17,7 @@ fark.factory('dice', ['$http', function($http) {
     x.dice.push({cube: "new", face: Math.floor(Math.random() * 6) + 1});
   }
   
+  // gets image from asset pipeline based on randomly generated number
   x.getImage = function(face) {
     if (face === 1) {
       return "one.png";
@@ -32,6 +34,7 @@ fark.factory('dice', ['$http', function($http) {
     }
   }
   
+  // sends AJAX request to rails to check score for dice
   x.scoreTheseDice = function (submitted) {
     return $http.post('/potential_score', {submitted: submitted}).success(function(score){
       return score

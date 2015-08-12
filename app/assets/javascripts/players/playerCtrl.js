@@ -24,12 +24,16 @@ fark.controller('PlayerCtrl', [
       }
     }
                 
-    
     $scope.createPlayers = function() {
       players.create($scope.players)
       .then(function(data) {
         $scope.players = data.data
       })
+    }
+    $scope.playersInThisGame = $scope.players.length
+    
+    var playerSelector = function() {
+      
     }
     //   var player_names = []
     //   for (x = 0; x < $scope.players.length; x++) {
