@@ -6,14 +6,20 @@ class Player < ActiveRecord::Base
   def self.score(dice)
     points = 0
     if straight?(dice)
-      1500
+      points = 1500
     elsif three_pairs?(dice)
-      750
+      points = 750
     else
       points += three_of_kind(dice)
       points += ones(dice)
       points += fives(dice)
+      if points == 0 && dice.length == 6
+        points = 500
+      end
     end
+    
+    points
+    
   end
   
   # gets an organized Array of dice and how many of each was rolled
