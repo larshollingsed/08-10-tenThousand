@@ -2,9 +2,9 @@
   New Game!
 </h2>
 
-<p ng-hide="selectPlayers">
+<p ng-hide="players.length">
   How many players?
-  <input type="number" ng-model="numberOfPlayers" ng-change="playerNumber(); selectPlayers=true" ></input>
+  <input type="number" ng-model="numberOfPlayers" ng-change="playerNumber()" ></input>
 </p>
 <form ng-submit="createPlayers()">
   <div ng-repeat="player in players track by $index">
