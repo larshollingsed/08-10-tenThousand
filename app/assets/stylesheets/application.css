@@ -19,6 +19,10 @@
   padding: 5px;
 }
 
+.die_face {
+  width: 50px;
+}
+
 input[type=checkbox] {
   display:none;
 }

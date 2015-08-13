@@ -22,17 +22,17 @@ fark.factory('dice', ['$http', function($http) {
   // gets image from asset pipeline based on randomly generated number
   x.getImage = function(face) {
     if (face === 1) {
-      return "one.png";
+      return "<%= asset_path('one.png') %>";
     } else if (face === 2) {
-      return "two.png";
+      return "<%= asset_path('two.png') %>";
     } else if (face === 3) {
-      return "three.png";
+      return "<%= asset_path('three.png') %>";
     } else if (face === 4) {
-      return "four.png";
+      return "<%= asset_path('four.png') %>";
     } else if (face === 5) {
-      return "five.png";
+      return "<%= asset_path('five.png') %>";
     } else if (face === 6) {
-      return "six.png";
+      return "<%= asset_path('six.png') %>";
     }
   }
   
