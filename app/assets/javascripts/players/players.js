@@ -10,6 +10,13 @@ fark.factory('players', ['$http', function($http) {
     }
   }
   
+  x.winner = function() {
+    var winners = x.players.sort(function(a, b) {
+      return b.total - a.total
+    })
+    return winners[0].name
+  }
+  
   x.create = function (new_players) {
     return $http.post('/create_players', {new_players: new_players}).success(function(data){
       return data

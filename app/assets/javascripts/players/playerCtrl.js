@@ -7,6 +7,8 @@ fark.controller('PlayerCtrl', [
     $scope.players = players.players;
     $scope.turn = 0;
     $scope.playerTurn = $scope.players[$scope.turn];
+    $scope.endgame = false;
+    $scope.totalPoints = 10000;
     
     $scope.playerNumber = function() {
       players.changeNumber($scope.numberOfPlayers);
@@ -14,6 +16,10 @@ fark.controller('PlayerCtrl', [
     
     $scope.endTurn = function() {
       $scope.playerTurn.total = $scope.playerTurn.total + $scope.round + $scope.score;
+      if ($scope.playerTurn.total >= $scope.totalPoints) {
+        $scope.endgame = true;
+        alert("Final round!")
+      }
       playerSelector();
       $scope.resetRoll();
     }
@@ -63,10 +69,17 @@ fark.controller('PlayerCtrl', [
       })
     }
     
+    $scope.playerWinner = players.winner;
+    
     var playerSelector = function() {
       $scope.turn = $scope.turn + 1;
       if ($scope.turn == $scope.players.length) {
-        $scope.turn = 0;
+        if ($scope.endgame == false) {
+          $scope.turn = 0;
+        } else if ($scope.endgame == true) {
+          var winner = players.winner()
+          alert(winner + " has won the game!!")
+        }  
       }
       $scope.playerTurn = $scope.players[$scope.turn];
     }

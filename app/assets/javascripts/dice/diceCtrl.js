@@ -31,9 +31,7 @@ function($scope, $scope, dice, players){
     }
      dice.scoreTheseDice(allDice)
       .then(function(data) {
-        if (data.data == 0 && $scope.dice.length == 6) {
-          alert("new roll")
-        } else if (data.data == 0) {
+        if (data.data == 0) {
           alert("unscorable! :(");
           $scope.round = 0;
           $scope.unscorable = true;
