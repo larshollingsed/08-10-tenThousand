@@ -17,7 +17,7 @@ function($stateProvider, $urlRouterProvider) {
         controller: 'PlayerCtrl'
     })
 
-  $urlRouterProvider.otherwise('game');
+  $urlRouterProvider.otherwise('newgame');
 }])
 
 

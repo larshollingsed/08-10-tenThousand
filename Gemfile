@@ -5,6 +5,7 @@ gem 'responders', '~> 2.0'
 gem 'angular_rails_csrf'
 # gem 'devise', '~> 3.4.0'
 gem "pry-byebug"
+gem 'rails_12factor', group: :production
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
