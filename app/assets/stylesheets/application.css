@@ -14,6 +14,11 @@
  *= require_self
  */
 
+.dice_div {
+  float: left;
+  padding: 5px;
+}
+
 input[type=checkbox] {
   display:none;
 }
