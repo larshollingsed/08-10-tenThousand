@@ -9,13 +9,12 @@
   <p>
     <!-- $scope.score  is updated on every click of a die-->
     Score for these dice - {{score}}<br>
-    <!-- shows die faces submitted** development only-->
-    {{submitted}}
   </p>
 </form>
-<!-- saves score to round and rolls remaining dice -->
-<button ng-show="score" ng-click="scoreAndRoll()">Save these dice and roll again</button><br>
 
+<!-- saves score to round and rolls remaining dice -->
+<!-- only visible if scorable dice are selected -->
+<button ng-show="score" ng-click="scoreAndRoll()">Save these dice and roll again</button><br>
 
 <p>
   <!-- shows accumulated points for the round -->
@@ -23,13 +22,13 @@
 </p>
 <div ng-controller="PlayerCtrl">
   Current Player - {{playerTurn.name}}<br>
+  <!-- if all dice are unscorable, this becomes visible and advances to next player -->
   <button ng-show="unscorable" ng-click="endTurn()">End turn</button>
   <!-- saves score to player and passes to the next -->
   <button ng-show="score + round >= 350 && score" ng-click="endTurn()">Save these dice and end turn</button><br>
   <p ng-repeat="player in players">
     {{player.name}} - {{player.total}}
   </p>
-  Players # - {{playersInThisGame}}
 </div>
 <h5>
   Scoring - 

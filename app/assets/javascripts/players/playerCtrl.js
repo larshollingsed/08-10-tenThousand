@@ -16,8 +16,30 @@ fark.controller('PlayerCtrl', [
       $scope.playerTurn.total = $scope.playerTurn.total + $scope.round + $scope.score;
       playerSelector();
       $scope.resetRoll();
-      
     }
+    
+    // randomizes player order
+    $scope.randomizePlayers = function(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex ;
+
+        // While there remain players to shuffle...
+        while (0 !== currentIndex) {
+
+          // Pick a remaining player...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+
+          // And swap it with the current player.
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+      }
+    
+    
+    //supposed to add another blank field on newgame when at end of players TODO
     // $scope.change = function(){
         
     //   var count = $scope.players.length,
@@ -40,9 +62,6 @@ fark.controller('PlayerCtrl', [
         $scope.players = data.data
       })
     }
-    $scope.playersInThisGame = $scope.players.length
-    
-    
     
     var playerSelector = function() {
       $scope.turn = $scope.turn + 1;
@@ -51,11 +70,5 @@ fark.controller('PlayerCtrl', [
       }
       $scope.playerTurn = $scope.players[$scope.turn];
     }
-    //   var player_names = []
-    //   for (x = 0; x < $scope.players.length; x++) {
-    //     player_names.push($scope.players[x]);
-    //   }
-    //   players.create(player_names);
-    // }
     
   }])

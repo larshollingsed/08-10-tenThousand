@@ -6,7 +6,7 @@ fark.factory('players', ['$http', function($http) {
   x.changeNumber = function(number) {
 
     for (y = 0; y < number; y++) {
-      x.players.push({id: null, name: null, round: 0, total: 0})
+      x.players.push({id: null, name: null, order: 0, total: 0})
     }
   }
   

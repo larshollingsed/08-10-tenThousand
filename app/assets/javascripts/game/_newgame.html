@@ -2,15 +2,15 @@
   New Game!
 </h2>
 
-<p>
+<p ng-hide="selectPlayers">
   How many players?
-  <input type="number" ng-model="numberOfPlayers" ng-change="playerNumber()"></input>
+  <input type="number" ng-model="numberOfPlayers" ng-change="playerNumber(); selectPlayers=true" ></input>
 </p>
 <form ng-submit="createPlayers()">
   <div ng-repeat="player in players track by $index">
     <input type="text" ng-model="player.name" ng-change='change()'>
   </div>
-  <button type="submit">Add these players</button>
+  <button ng-click="randomizePlayers(players)">Randomize these players</button>
 </form>
 <div ng-repeat="player in players">
   {{player.name}}
