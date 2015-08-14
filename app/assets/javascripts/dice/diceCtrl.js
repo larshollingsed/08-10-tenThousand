@@ -1,9 +1,8 @@
 fark.controller('DiceCtrl', [
 '$scope',
-'$scope',
 'dice',
-  'players',
-function($scope, $scope, dice, players){
+'players',
+function($scope, dice, players){
   // adds the dice.factory to this controller 
   $scope.dice = dice.dice;
  // sets the score to 0
@@ -24,31 +23,47 @@ function($scope, $scope, dice, players){
     }
   }
   
+  // checks to see if rolled dice have any possible score
   var scorable = function() {
     var allDice = []
+    
+    // collects all rolled die faces into an array
     for (y = 0; y < $scope.dice.length; y++) {
       allDice.push($scope.dice[y].face)
     }
+    
+    //sends dice to factory to check scorability
      dice.scoreTheseDice(allDice)
       .then(function(data) {
+        
+        // if dice can't produce a score, alerts the player
         if (data.data == 0) {
           alert("unscorable! :(");
+          // sets round score back to zero (player loses all accumulated points)
           $scope.round = 0;
+          // $scope.unscorable is $watched by the "end turn" button
           $scope.unscorable = true;
         }
       })
   }
   
+  // whenever the dice are rolled, runs function to check score
   $scope.$watch('dice', function(newVal, oldVal) {
     scorable()
   })
   
+  // resets round for next player
   $scope.resetRoll = function() {
+    // rolls 6 new dice
     $scope.dice = dice.rollDice(6);
     $scope.diceRemaining = 6;
+    // resets score for the hand
     $scope.score = 0;
+    // resets score for the round
     $scope.round = 0;
+    // resets unscorability
     $scope.unscorable = false;
+    // resets submitted dice
     $scope.submitted = [];
   }
   
@@ -79,11 +94,11 @@ function($scope, $scope, dice, players){
   // submit selected dice, score and roll remaining dice again
   $scope.scoreAndRoll = function() {
     // adds newly scored dice to accumulated round score
-    $scope.round = $scope.round + $scope.score
+    $scope.round += $scope.score
     // resets $scope.score(immediate score for dice) to 0
     $scope.score = 0
     // removes submitted dice from total rolled dice
-    $scope.diceRemaining = $scope.diceRemaining - $scope.submitted.length
+    $scope.diceRemaining -= $scope.submitted.length
     // resets submitted dice
     $scope.submitted = []
     // if all dice have been submitted and scored then gives the player 6 new

@@ -2,26 +2,25 @@
   New Game!
 </h2>
 
+<!-- populates $scope.players with the number chosen -->
 <p ng-hide="players.length">
   How many players?
   <input type="number" ng-model="numberOfPlayers" ng-change="playerNumber()" ></input>
 </p>
 
 <!-- fix to allow players to select final point total -->
-<p>
-  Endgame point total?
-  <input type="number" ng-model="totalPoints">
-</p>
+<!-- <p> -->
+  <!-- Endgame point total? -->
+  <!-- <input type="number" ng-model="players.totalPoints"> -->
+<!-- </p> -->
 
+<!-- displays text input for each player's name -->
 <form ng-submit="createPlayers()">
   <div ng-repeat="player in players track by $index">
-    <input type="text" ng-model="player.name" ng-change='change()'>
+    <input type="text" ng-model="player.name" ng-change='change()' placeholder="Player name">
   </div>
+  <!-- randomly shuffles player order -->
   <button ng-click="randomizePlayers(players)">Randomize these players</button>
 </form>
-<div ng-repeat="player in players">
-  {{player.name}}
-</div>
-
 
 <a ng-href="#/game">Start game</a>

@@ -2,7 +2,9 @@
   <!-- iterates through dice (JS objects from dice.js factory) -->
   <div ng-repeat="die in dice" class="dice_div">
     <!--  creates a selectable die face image for each randomly generated die-->
-    <input type="checkbox" ng-model="die.held" ng-click="scoreDice()" id="die{{die.id}}"> </input><label for="die{{die.id}}">
+    <input type="checkbox" ng-model="die.held" ng-click="scoreDice()" id="die{{die.id}}"> 
+    </input>
+    <label for="die{{die.id}}">
       <img ng-src="{{getImage(die.face)}}" class="die_face">
     </label>
   </div>
